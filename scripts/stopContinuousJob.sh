@@ -3,7 +3,7 @@
 # Author: Bertrand BENOIT <bertrand@bertrand-benoit.net>
 # Version: 2.0
 #
-# Description: diable automagically all continuous Job of specified website.
+# Description: disable automagically all continuous Job of specified website.
 #
 # Sample: stopContinuousJob.sh itc-cegid
 
@@ -26,6 +26,8 @@ function oldCliV1() {
 # usage: newCliV2 <website> <resource group>
 function newCliV2() {
     local _website="$1" _resourceGroup="$2"
+
+    echo -e "If error occurs, you may need to run the following instructions:\n\taz login"
 
     echo -e "Loading continuous job list for website '$_website', in resource-group ''$_resourceGroup' ..."
     for continuousJob in $( az webapp webjob continuous list --name "$_website" --resource-group "$_resourceGroup" |jq '.[].name' -r |sed -e "s/$_website//"  ); do
