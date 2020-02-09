@@ -35,7 +35,7 @@ function usage() {
   echo -e "<resource group>name of the resource group which owns the webapp to manage (default: automatically detected according to your configuration)"
   echo -e "<webjob name>\tname of the webjob to manage (default: ALL webjob of the specfified webapp)"
   echo -e "--list\t\tlist continuous webjob instead of stopping them"
-  echo -e "--debug\t\tshow found episode number"
+  echo -e "--debug\t\tshow debug information (activating scripts-common Debug mode)"
   echo -e "-h|--help\tshow this help"
 }
 

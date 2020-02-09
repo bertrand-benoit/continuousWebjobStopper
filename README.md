@@ -66,7 +66,7 @@ Usage: ./stopContinuousJob.sh -a|--webapp <webapp name> [-r|--resourceGroup <res
 <resource group>name of the resource group which owns the webapp to manage (default: automatically detected according to your configuration)
 <webjob name>	name of the webjob to manage (default: ALL webjob of the specfified webapp)
 --list		list continuous webjob instead of stopping them
---debug		show found episode number
+--debug		show debug information (activating scripts-common Debug mode)
 -h|--help	show this help
 ```
 
