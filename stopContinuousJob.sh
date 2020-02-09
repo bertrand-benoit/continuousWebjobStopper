@@ -14,8 +14,10 @@ currentDir=$( dirname "$( command -v "$0" )" )
 export GLOBAL_CONFIG_FILE="$currentDir/default.conf"
 export CONFIG_FILE="${HOME:-/home/$( whoami )}/.config/stopContinuousJob.conf"
 
+scriptsCommonUtilities="$currentDir/scripts-common/utilities.sh"
+[ ! -f "$scriptsCommonUtilities" ] && echo -e "ERROR: scripts-common utilities not found, you must initialize your git submodule once after you cloned the repository:\ngit submodule init\ngit submodule update" >&2 && exit 1
 # shellcheck disable=1090
-[ -n "$SCRIPTS_COMMON_PATH" ] && . "$SCRIPTS_COMMON_PATH"
+. "$scriptsCommonUtilities"
 
 checkBin jq || errorMessage "This tool requires jq. Install it please, and then run this tool again."
 checkBin az || errorMessage "This tool requires az (Azure CLI v2). Install it please, and then run this tool again."
