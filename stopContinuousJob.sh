@@ -23,7 +23,6 @@ checkBin az || errorMessage "This tool requires az (Azure CLI v2). Install it pl
 checkAndSetConfig "patterns.removeMatchingParts" "$CONFIG_TYPE_OPTION"
 REMOVE_NAME_MATCHING_PARTS="$LAST_READ_CONFIG"
 
-
 #####################################################
 #                Command line management.
 #####################################################
@@ -38,23 +37,23 @@ website="$1"
 function oldCliV1() {
   writeMessage "If error occurs, you may need to run the following instructions:\n\tazure login"
 
-  for continuousJob in $( azure site job list $website |grep continuous |awk '{print $2}' ); do
+  for continuousJob in $( azure site job list "$website" |grep continuous |awk '{print $2}' ); do
     writeMessageSL "Stopping continuous job $continuousJob ... "
-    ! azure site job stop $continuousJob $website && echo "FAILED" >&2 && continue
+    ! azure site job stop "$continuousJob" "$website" && echo "FAILED" >&2 && continue
     echo "OK"
   done
 }
 
 # Usage: checkCLIV2Login
 function checkCLIV2Login() {
-  $( az account list >/dev/null 2>&1 )
+  az account list >/dev/null 2>&1
 }
 
 # Usage: defineResourceGroup <website>
 function defineResourceGroup() {
   local _website="$1" namePart resourceGroup
 
-  namePart=$( echo "$_website" |sed -e 's/^itcp*-//')
+  namePart=$( removeAllSpecifiedPartsFromString "$_website" "$REMOVE_NAME_MATCHING_PARTS" "1" )
   resourceGroup=$( az group list |jq '.[].name' -r |uniq |grep -i "$namePart" ) \
     || errorMessage "Unable to define resource group for Website '$website'. Ensure your configuration file is OK, and your az CLI is logged in."
   echo "$resourceGroup"
