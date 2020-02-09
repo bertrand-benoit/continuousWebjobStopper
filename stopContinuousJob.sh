@@ -45,6 +45,12 @@ function oldCliV1() {
   done
 }
 
+# Usage: checkCLIV2Login
+function checkCLIV2Login() {
+  $( az account list >/dev/null 2>&1 )
+}
+
+# Usage: defineResourceGroup <website>
 function defineResourceGroup() {
   local _website="$1" namePart resourceGroup
 
@@ -67,6 +73,14 @@ function newCliV2() {
     done
 }
 
-echo -e "If error occurs, you may need to run the following instructions:\n\taz login"
-resourceGroup=$( defineResourceGroup "$website")
+#####################################################
+#                Instructions.
+#####################################################
+writeMessage "Checking az CLI is logged ON."
+checkCLIV2Login || errorMessage "It seems error occurs, you may need to run the following instructions:\n\taz login"
+
+resourceGroup=$( defineResourceGroup "$website" )
+[ -z "$resourceGroup" ] && errorMessage "Unable to define resource group for Website '$website'. Ensure your configuration file is OK, and your az CLI is logged ON."
+
+writeMessage "Defined resource group for Website '$_website': '$resourceGroup'"
 newCliV2 "$website" "$resourceGroup"
