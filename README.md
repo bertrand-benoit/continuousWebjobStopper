@@ -1,5 +1,7 @@
 # Azure continuous webjob lister/stopper version 2.2.0
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8394a9b7910e470f9faa1639d7f01cdb)](https://www.codacy.com/manual/bertrand-benoit/continuousWebjobStopper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bertrand-benoit/continuousWebjobStopper&amp;utm_campaign=Badge_Grade)
+
 This is a free tool allowing to automatically list/stop all/specified continuous webjob(s) of specified Azure Webapp.
 
 This script uses my [scripts-common](https://github.com/bertrand-benoit/scripts-common) project, you can find on GitHub.
@@ -88,7 +90,6 @@ List all continuous webjobs of Webapp 'myClient1WebApp', and resource group 'pro
 ```bash
   ./stopContinuousJob.sh --list -a 'myClient1WebApp' -r 'prod-rg'
 ```
-
 
 ## Contributing
 Don't hesitate to [contribute](https://opensource.guide/how-to-contribute/) or to contact me if you want to improve the project.
