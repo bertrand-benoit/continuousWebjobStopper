@@ -55,11 +55,9 @@ function defineResourceGroup() {
   local _website="$1" namePart resourceGroup
 
   namePart=$( echo "$_website" |sed -e 's/^itcp*-//')
-  resourceGroup=$( az group list |jq '.[].name' -r |uniq |grep -i "$namePart" )
-  [ -z "$resourceGroup" ] && return 0
-
+  resourceGroup=$( az group list |jq '.[].name' -r |uniq |grep -i "$namePart" ) \
+    || errorMessage "Unable to define resource group for Website '$website'. Ensure your configuration file is OK, and your az CLI is logged in."
   echo "$resourceGroup"
-  return 0
 }
 
 # Usage: newCliV2 <website> <resource group>
@@ -79,8 +77,6 @@ function newCliV2() {
 writeMessage "Checking az CLI is logged ON."
 checkCLIV2Login || errorMessage "It seems error occurs, you may need to run the following instructions:\n\taz login"
 
-resourceGroup=$( defineResourceGroup "$website" )
-[ -z "$resourceGroup" ] && errorMessage "Unable to define resource group for Website '$website'. Ensure your configuration file is OK, and your az CLI is logged ON."
-
-writeMessage "Defined resource group for Website '$_website': '$resourceGroup'"
+resourceGroup=$( defineResourceGroup "$website" ) || exit 1
+writeMessage "Defined resource group for Website '$website': '$resourceGroup'"
 newCliV2 "$website" "$resourceGroup"
