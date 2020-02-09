@@ -3,7 +3,7 @@
 # Author: Bertrand BENOIT <contact@bertrand-benoit.net>
 # Version: 2.2
 #
-# Description: stops automatically all continuous Jobs of specified Azure website.
+# Description: lists/stops all/specified continuous webjob(s) of a specified Azure Webapp.
 
 #####################################################
 #                General configuration.
