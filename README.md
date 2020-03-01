@@ -1,10 +1,12 @@
+:warning: This project is now hosted on [Gitlab](https://gitlab.com/bertrand-benoit/continuousWebjobStopper); switch to it to get newer versions.
+
 # Azure continuous webjob lister/stopper version 2.2.0
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8394a9b7910e470f9faa1639d7f01cdb)](https://www.codacy.com/manual/bertrand-benoit/continuousWebjobStopper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bertrand-benoit/continuousWebjobStopper&amp;utm_campaign=Badge_Grade)
 
 This is a free tool allowing to automatically list/stop all/specified continuous webjob(s) of specified Azure Webapp.
 
-This script uses my [scripts-common](https://github.com/bertrand-benoit/scripts-common) project, you can find on GitHub.
+This script uses my [scripts-common](https://gitlab.com/bertrand-benoit/scripts-common) project.
 
 ## Requirements
 This tool used:
@@ -29,10 +31,10 @@ git submodule init
 git submodule update
 ```
 
-This way, [scripts-common](https://github.com/bertrand-benoit/scripts-common) project will be available and you can use this tool.
+This way, [scripts-common](https://gitlab.com/bertrand-benoit/scripts-common) project will be available and you can use this tool.
 
 ## Configuration files
-This tools uses the configuration file feature of the [scripts-common](https://github.com/bertrand-benoit/scripts-common) project.
+This tools uses the configuration file feature of the [scripts-common](https://gitlab.com/bertrand-benoit/scripts-common) project.
 
 The global configuration file, called **default.conf**, is in the root directory of this repository.
 It contains default configuration for this tool, and should NOT be edited.
@@ -93,7 +95,7 @@ List all continuous webjobs of Webapp 'myClient1WebApp', and resource group 'pro
 
 ## Contributing
 Don't hesitate to [contribute](https://opensource.guide/how-to-contribute/) or to contact me if you want to improve the project.
-You can [report issues or request features](https://github.com/bertrand-benoit/continuousWebjobStopper/issues) and propose [pull requests](https://github.com/bertrand-benoit/continuousWebjobStopper/pulls).
+You can [report issues or request features](https://gitlab.com/bertrand-benoit/continuousWebjobStopper/issues) and propose [merge requests](https://gitlab.com/bertrand-benoit/continuousWebjobStopper/merge_requests).
 
 ## Versioning
 The versioning scheme used in this project is [SemVer](http://semver.org/).
